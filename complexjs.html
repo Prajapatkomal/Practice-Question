@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body id="container">
+<h1>Complex JavaScript Question</h1>
+<p><span>Closure :-</span>JavaScript creates closure when a function define inside another function. Here the innner function remembers the variable that present in outer function, even after outer function has finished its execution. It means innner function has access to lexical scope. </p>
+<pre>     
+        function outer(){
+         let count = 0
+         return function inner(){
+           count++
+           console.log(count)
+         }
+        }
+        let counter = outer()
+        counter()                // output= 1   
+</pre>
+<p class="use">Uses of Closure :- 1. Data Privacy  - Closures let you hide variables from the outside world,  here secret is not accessible directly — only via getSecret()</p>
+<pre>
+    function secretHolder() {
+    let secret = "I love JS";
+    return {
+      getSecret: function() {
+      return secret;
+      },
+     }
+    }
+    const s = secretHolder()
+    console.log(s.getSecret())    // output = I love JS</pre>
+<p class="use"> 2. can create customize function by "locking in" parameters.</p>
+     <pre>
+        function multiplier(factor) {
+          return function(num) {
+              return num * factor;
+          };
+        }
+       const double = multiplier(2);
+       console.log(double(5)); // 10
+     </pre>
+<p><span>Hoisting :-</span>Hoisting is JavaScript's behavior of moving declarations (not initializations) to the top of their scope before code execution.</p>
+ <p><span class="sub-heading">variable hoisting-</span> variables declared with var are hoisted and can be access before initializations,<br/> let and const are not hoisted the same way. let and const are hoisted, but they are in a "temporal dead zone" (TDZ) — meaning they can't be accessed before the line they are declared. </p>
+ <pre>
+    console.log(x); // undefined
+    var x = 5;
+
+
+    console.log(y); // ❌ ReferenceError: Cannot access 'y' before initialization
+    let y = 10;
+ </pre>
+<p><span class="sub-heading">function hoisting-</span></p>
+<p>function declarations are fully hoisted if we call it before the line where they declared they give result.<br/>function expression are not fully hoisted, calling before the line they declared will give ReferenceError.</p>
+  <pre>
+    sayHello();        // Hello (function declarations)
+
+    function sayHello() {
+       console.log("Hello");
+     }
+
+    .......................................
+
+    greet();        // ❌ TypeError: greet is not a function(function expression)
+
+    var greet = function() {
+       console.log("Hi");
+    };
+
+
+  </pre>
+
+  <p><span>Currying:-</span>Currying is a functional programming technique where a function doesn't take all its arguments at once.
+Instead, it takes one argument at a time and returns a new function that takes the next argument — and so on.</p>
+  <pre>
+    function add(a) {
+     return function(b) {
+         return function(c) {
+           return a + b +c;
+      };
+    }
+  }
+     console.log(add(2)(3)(5)) // 10
+
+  </pre>
+</body>
+</html>

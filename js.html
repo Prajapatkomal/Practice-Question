@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body id="container">
+    <h1>JavaScript</h1>
+    <a href="/complexjs.html"><button>Complex JS</button></a>
+     <p class="ques">Q1. Explain the behavior of this keyword in normal and arrow functions.</p>
+     <p>Ans- normal function have its own this keyword that represent to parent object, if their is no parent object then it will refer to window object<br/>
+     Arrow function doesnt have its own this keyword, it takes this from the surrounding (outer) scope.</p>
+     <pre>
+    const person = {
+       name: "Alice",
+       greet: function () {
+          console.log("Hello, I am " + this.name);
+         } 
+    };
+    person.greet(); // Hello, I am Alice
+
+..............................................................................
+
+    const person = {
+       name: "Alice",
+       greet: function () {
+         setTimeout(() => {
+            console.log("Hi, I am " + this.name);
+         }, 1000);
+       },
+     };
+
+person.greet(); // Hi, I am Alice --The arrow function inside setTimeout inherits this from the surrounding greet method
+
+     </pre>
+
+
+</body>
+</html>
+
+
+
+
