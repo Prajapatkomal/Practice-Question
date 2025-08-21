@@ -85,5 +85,43 @@ Instead, it takes one argument at a time and returns a new function that takes t
      console.log(add(2)(3)(5)) // 10
 
   </pre>
+  <p><span>Promise:-</span>Promise is a JavaScript object that used to handle asynchronous operations—tasks.
+   It represents the eventual result (completion or failure) of an asynchronous operation.It don’t 
+   complete immediately, like fetching data from a server.<br/><br/>
+  🧠 States of a Promise : 3<br/>
+    👉 Pending – the initial state, not fulfilled or rejected.<br/>
+    👉 Fulfilled – the operation completed successfully.<br/>
+    👉 Rejected – the operation failed.   </p>
+
+    <pre>
+        let promise = new Promise((resolve, reject) => {
+            let success = true
+            if(success){
+               resolve("Hello, world!");
+            }else{
+               reject("failed")
+              }
+            });
+
+        promise
+        .then(message =>console.log(message))   // Output: Hello, world!)
+        .catch(err => console.log(err))
+
+        <p>fetching Api :-</p>
+        fetch("https://fakestoreapi.in/api/products")
+        .then((res) => res.json())
+        .then((data) => {
+           console.log(data); // Parsed JSON data
+         })
+        .catch((err) => {
+           console.log(err); // Handle errors
+         });
+
+    </pre>
 </body>
-</html>
+</html
+
+
+
+
+

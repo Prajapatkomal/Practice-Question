@@ -8,7 +8,7 @@
 </head>
 <body id="container">
     <h1>JavaScript</h1>
-    <a href="/complexjs.html"><button>Complex JS</button></a>
+    <a href="./complexjs.html" class="button-link">Complex JS</a>
      <p class="ques">Q1. Explain the behavior of this keyword in normal and arrow functions.</p>
      <p>Ans- normal function have its own this keyword that represent to parent object, if their is no parent object then it will refer to window object<br/>
      Arrow function doesnt have its own this keyword, it takes this from the surrounding (outer) scope.</p>
@@ -36,8 +36,100 @@ person.greet(); // Hi, I am Alice --The arrow function inside setTimeout inherit
 
      </pre>
 
+ <p class="ques">Q2. Explain the concept of Lexical Scope in JavaScript.</p>
+ <p>Ans-Lexical Scope (also called static scope) means that the scope of variables is determined by their physical location in the written code — i.e., where they are declared, not where they are called.<br/>
+   A function remembers the scope where it was defined, not where it was executed. </p>
+   <pre>
+      function outer() {
+         const outerVar = "I am from outer";
+         function inner() {
+              console.log(outerVar); // inner function has access to outerVar
+        }
+          inner()
+      }
+      outer();
+   </pre>
 
+   <p class="ques">Q3. What is the difference between shallow copy and deep copy?</p>
+   <p>Ans- A shallow copy creates a new object or array, but it only duplicates the top-level properties. If the original object or array contains nested objects or arrays, the shallow copy will contain references to those same nested structures, rather than creating new copies of them.<br/>
+           Changes made to nested objects or arrays within the shallow copy will also affect the original object or array,</p>
+           1.Using spread operator-
+            <pre>
+           
+              const original = {
+                  name: "Alice",
+                  address: {
+                      city: "New York"
+                        }
+                };
+
+        const shallowCopy = { ...original }
+        shallowCopy.address.city = "Los Angeles";    // Modify nested object
+
+        console.log(original.address.city);            // "Los Angeles"
+
+            </pre>
+           <p>A deep copy creates a completely independent clone of an object or array, including all nested objects and arrays. Every level of the structure is duplicated, ensuring no shared references between the original and the copy.<br/>
+          Changes made to the deep copy, even within nested structures, will not affect the original object or array. This provides complete isolation.</p>
+           1.Using structuredClone() (modern browsers only)-
+          <pre>
+               const original = {
+                    name: "Alice",
+                    address: {
+                       city: "New York"
+                     }
+               };
+
+             const deepCopy = structuredClone(original);
+             deepCopy.address.city = "Los Angeles";
+
+              console.log(original.address.city);             // "New York"
+            </pre>
+            2. Using JSON.parse(JSON.stringify(obj))-
+            <pre>
+              const deepcopy = JSON.parse(JSON.stringify(original))
+            </pre>
+        <p class="ques">Q4. What is the purpose of bind, call, and apply methods?</p>
+        <p>Ans- In JavaScript call, apply and bind methods are used to specify the value of this in function.
+                <br/>  call - call method immediately invokes function with specified this value and arguments are passed indivisually(with comma). <br/>
+                  <pre>
+            function greet(greeting) {
+              console.log(`${greeting}, ${this.name}!`);
+            }
+            const person = { name: 'Alice' };
+            greet.call(person, 'Hello'); // Output: Hello, Alice!
+                  </pre>
+                
+                   apply- apply method is similar to call() but it accepts arguments in aaray form.
+       <pre>
+         function total(a ,b){
+             return this.num * (a+b)
+          }
+         factor = {
+             num:2
+         }
+            console.log(total.apply(factor,[2,4] ))
+       </pre>
+                
+                <br/>bind- bind method create new function, that is called with specify this value and arguments passed indivisually like call() method.
+                  It does not execute the function immediately; instead, it returns a new, "bound" function that can be invoked later. 
+                  <pre>
+          function greet(greet){
+            return  greet +" "+ this.name
+          }
+
+           person = {
+              name:"Komal"
+           }
+          
+           const sayHello = greet.bind(person,"hello" )
+          console.log(sayHello())
+
+
+                  </pre>
+        </p>
 </body>
+
 </html>
 
 

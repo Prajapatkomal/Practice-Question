@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body id="container">
+    <h1>React based Questions</h1>
+    <p class="ques">Q. What is React.memo and when should you use it?</p>
+    <p>Ans- React.memo is a higher-order component in React that helps optimize performance by memoizing a functional component. It prevents unnecessary re-renders if the component's props haven’t changed.
+      <br/> <br/>
+       ✅ When to Use React.memo:-<br/>
+🔸Component renders often with the same props<br/>
+🔸The rendering is expensive<br/>
+🔸if facing performance issue because of unnecessary re-rendering.<br/>
+🔸if component has huge computational logic.  <br/><br/>
+⚠️ When NOT to Use React.memo <br/>
+🔸The component is simple and renders quickly or rarely<br/>
+🔸Props change frequently anyway<br/>
+🔸You're not facing performance issues because of re-rendering.
+    </p>
+    <pre>
+        const parentComponent = ()=>{
+            const [count,setCount] = useState(0)
+
+            return (
+                Count:{count}
+               <button onClick={()=>setCount(count+1)}Increment</button>
+                < ChildComponent/>
+            ) }
+
+
+        const ChildComponent = memo(()=>{              -----wrap Component with memo
+            console.log("component rerendering")
+             return "Child component rerenders" })             
+
+    </pre>
+    <p class="ques">Q. What is useMemo Hook? How does useMemo help in performance optimization?</p>
+    <p>Ans- useMemo is a React Hook used to memoize the speific value or result of an expensive calculation within a functional component.<br/>
+    It takes two arguments: a function that returns the value to be memoized, and an array of dependencies. The function will only re-run if any of the dependencies in the array have changed.<br/><br/>
+It returns the memoized value: const memoizedValue = useMemo(() => expensiveCalculation(a, b), [a, b]);</p>
+<br/>
+<p class="ques">Q. Difference between React.memo and useMemo?</p>
+<p style="padding-left: 10px;">Ans-🔸React.memo memoizes entire components, preventing unnecessary re-renders of the component itself. useMemo memoizes values or results of computations within a component.<br/>
+ 🔸React.memo is a HOC that wraps a component definition. useMemo is a Hook called inside a functional component to memoize a specific value. <br/>
+ 🔸React.memo re-renders the component if its props change. useMemo re-calculates the value if its dependencies change.
+</body> 
+</html>

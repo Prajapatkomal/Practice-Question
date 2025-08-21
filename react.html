@@ -1,1 +1,91 @@
-<h1>react</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body id="container">
+     <h1>React</h1>
+      <a href="./reactQue.html" class="button-link">React Based Question</a>
+
+     <p><span>Redux:-</span>Redux is a state management library for JavaScript applications, most commonly used with React. It helps you manage and centralize the application state in a predictable way.
+  🔧 What Does Redux Do?<br/>
+     Redux provides:<br/>
+Store	👉Holds the entire state tree of the app<br/>
+Action 👉	A plain object describing what happened (e.g., { type: 'INCREMENT' })<br/>
+Reducer 👉	A pure function that takes the current state and action, and returns the new state<br/>
+Dispatch 👉	Sends an action to the store to update state</p>
+<pre>
+  // Action
+const increment = () => ({ type: 'INCREMENT' });
+
+// Reducer
+function counter(state = 0, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+    default:
+      return state;
+  }
+}
+
+// Store
+const { createStore } = require('redux');
+const store = createStore(counter);
+
+// Usage
+store.subscribe(() => console.log(store.getState()));
+store.dispatch(increment()); // Output: 1
+store.dispatch(increment()); // Output: 2
+
+</pre>
+<p><span>React Hook:- </span> React hooks are special functions introduced in React 16.8 , 
+    that allow us to use React features directly in functional component without writing class component.<br/>
+🧠 Why Use Hooks? <br/>
+Before hooks, you had to use class components to manage state or lifecycle methods. Hooks let you do that in function components, making your code:<br/>
+Simpler<br/>
+Easier to reuse logic<br/>
+More readable and testable <br/>
+</p>
+<table border="1">
+    <thead>
+        <tr>
+        <th>Hook</th>
+          <th>Purpose</th>
+          </tr>
+    </thead>
+    <tbody>
+          <tr>
+            <td>useState</td><td>Manage local component state</td>
+          </tr>
+          <tr>
+            <td>useEffect</td><td>Run side effects (e.g. data fetching, subscriptions)</td>
+          </tr>
+          <tr>
+            <td>useContext</td><td>Access context values without a Consumer</td>
+          </tr>
+          <tr>
+            <td>useRef</td><td>Create mutable refs for DOM elements or values that persist without re-rendering</td>
+          </tr>
+          <tr>
+            <td>useReducer</td><td>Manage complex state logic (like Redux in a component)</td>
+          </tr>
+          <tr>
+            <td>useMemo</td><td>Memoize expensive computations</td>
+          </tr>
+          <tr>
+            <td>useCallback</td><td>Memoize callback functions to prevent unnecessary re-renders</td>
+          </tr>
+          <tr>
+            <td>useLayoutEffect</td><td>Like useEffect, but runs synchronously after all DOM mutations</td>
+          </tr>
+          <tr>
+            <td>useImperativeHandle </td><td>Customize the instance value exposed to parent via ref</td>
+          </tr>
+            
+    </tbody>
+</table>
+</body>
+</html>
